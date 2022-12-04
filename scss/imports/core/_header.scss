@@ -1,0 +1,136 @@
+header {
+    width: 100%;
+    height: 80px;
+    position: fixed;
+    z-index: 100;
+    background-color: transparent;
+    transition: $t;
+    &.active-header {
+        transition: $t;
+        background-color: rgba(0, 0, 0, 0.2);
+    }
+    .container-fluid {
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .logo,
+        .cv {
+            cursor: pointer;
+            h1 {
+                @include text(20px, FR, normal, $white-cl, none);
+                transition: 0.4s;
+                font-weight: 700;
+            }
+            &:hover {
+                h1 {
+                    font-size: 25px;
+                    transition: 0.4s;
+                }
+            }
+        }
+        .btn-menu {
+            position: absolute;
+            margin-left: 15px;
+            width: 35px;
+            height: 17px;
+            cursor: pointer;
+            top: 50%;
+            left: 50%;
+            @include transform(translate(-50%, -50%));
+            span {
+                width: 100%;
+                height: 2px;
+                display: block;
+                background: $white-cl;
+                position: absolute;
+                border-radius: 10px;
+                top: 50%;
+                left: 50%;
+                @include transform(translate(-50%, -50%));
+                transition: $t;
+                opacity: 1;
+                visibility: visible;
+            }
+            &::before,
+            &::after {
+                content: "";
+                width: 100%;
+                height: 2px;
+                display: block;
+                background: $white-cl;
+                border-radius: 10px;
+                transform: rotate(180deg) translate(0, 0);
+                transition: $t;
+            }
+            &::after {
+                position: absolute;
+                bottom: 0;
+            }
+            &.active-button-menu {
+                span {
+                    transform: translateX(-150%);
+                    opacity: 0;
+                    visibility: hidden;
+                    transition: $t;
+                }
+                &::before {
+                    transform: rotate(45deg) translate(-5px, 10px);
+                    transition: $t;
+                }
+                &::after {
+                    transform: rotate(-45deg) translate(0px, -15px);
+                    transition: $t;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 580px) {
+    header {
+        height: 60px;
+        .container-fluid {
+            .logo,
+            .cv {
+                cursor: pointer;
+                h1 {
+                    font-size: 16px;
+                }
+                &:hover {
+                    h1 {
+                        font-size: 16px;
+                    }
+                }
+            }
+            .btn-menu {
+                width: 30px;
+                height: 15px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 320px) {
+    header {
+        height: 50px;
+        .container-fluid {
+            .logo,
+            .cv {
+                cursor: pointer;
+                h1 {
+                    font-size: 14px;
+                }
+                &:hover {
+                    h1 {
+                        font-size: 14px;
+                    }
+                }
+            }
+            .btn-menu {
+                width: 25px;
+                height: 14px;
+            }
+        }
+    }
+}
