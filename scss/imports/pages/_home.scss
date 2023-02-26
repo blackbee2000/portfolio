@@ -104,7 +104,7 @@
                 }
             }
             &-title {
-                @include text(100px, FR, normal, $white-cl, none);
+                @include text(80px, FR, normal, $white-cl, none);
                 font-weight: 500;
                 transition: $t;
                 z-index: 20;
